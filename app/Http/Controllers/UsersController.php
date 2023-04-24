@@ -13,6 +13,9 @@ class UsersController extends Controller
         $this->users = new Users();
     }
     public function index() {
+
+        $statement = $this->users->statementUser("SELECT * FROM users");
+
         $title = 'Danh Sach Nguoi dung';
         
       
@@ -87,5 +90,24 @@ class UsersController extends Controller
 
         // return redirect()->route('users.edit', ['id'=>$id])->with('cap nhat nguoi dung thanh cong');
         return back()->with('msg', 'Cap Nhat nguoi dung thanh cong');
+    }
+
+    public function delete($id=0){
+        if (!empty($id)){
+            $userDetail =  $this->users->getDetail($id);
+            if (!empty($userDetail[0])){
+               $deleteStatus = $this->users->deleteUser($id);
+               if ($deleteStatus){
+                    $msg = 'xoa nguoi dung thanh cong';
+               }else {
+                $msg = 'ban ko the xoa nguoi dung';
+               }
+            } else{
+                $msg = 'Nguoi dung ko ton tai';
+            }
+        }else{
+           $msg = 'Lien ke ko ton tai';
+        }
+        return redirect()->route('users.index')->with('msg', $msg);
     }
 }

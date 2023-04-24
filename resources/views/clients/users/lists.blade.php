@@ -30,7 +30,7 @@
                 </td>
 
                 <td>
-                    <a href="" class="btn btn-danger btn-sm">Xoa</a>
+                    <a onclick="return confirm('Ban co chac chan xoa khong?')" href="{{route('users.delete', ['id'=>$item->id])}}" class="btn btn-danger btn-sm">Xoa</a>
                 </td>
             </tr>
             @endforeach
