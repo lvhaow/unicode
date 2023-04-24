@@ -4,6 +4,8 @@
 @endsection
 @section('content')
     <h1>{{$title}}</h1>
+    <a href="#" class="btn btn-primary">Them nguoi dung</a>
+    <hr/>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -14,8 +16,8 @@
             </tr>
         </thead>
         <tbody>
-            @if (!empty($users))
-                @foreach ($users as $key => $item)
+            @if (!empty($usersList))
+                @foreach ($usersList as $key => $item)
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$item->fullname}}</td>

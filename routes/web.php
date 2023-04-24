@@ -37,4 +37,7 @@ use Illuminate\Http\Response;
  //Nguoi dung
  Route::prefix('users')->group(function(){
     Route::get('/', [UsersController::class, 'index']);
+
+    Route::get('/add', [UsersController::class, 'add']);
+    Route::post('/add', [UsersController::class, 'postAdd']);
  });
