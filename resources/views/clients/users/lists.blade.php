@@ -13,6 +13,8 @@
                 <th>Ten</th>
                 <th>Email</th>
                 <th width="15%">Thoi Gian</th>
+                <th width="5%">Sua</th>
+                <th width="5%">Xoa</th>
             </tr>
         </thead>
         <tbody>
@@ -23,11 +25,18 @@
                 <td>{{$item->fullname}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->created_at}}</td>
+                <td>
+                    <a href="{{route('users.edit', ['id'=>$item->id])}}" class="btn btn-warning btn-sm">Sua</a>
+                </td>
+
+                <td>
+                    <a href="" class="btn btn-danger btn-sm">Xoa</a>
+                </td>
             </tr>
             @endforeach
             @else
             <tr>
-                <td colspan="4">Ko co nguoi dung</td>
+                <td colspan="6">Ko co nguoi dung</td>
             </tr>
             @endif
         </tbody>
