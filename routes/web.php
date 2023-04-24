@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -31,4 +32,9 @@ use Illuminate\Http\Response;
  Route::get('demo-response', function (){
    $response = new Response('Hoc Lap Trinh', 200);
    return $response;
+ });
+
+ //Nguoi dung
+ Route::prefix('users')->group(function(){
+    Route::get('/', [UsersController::class, 'index']);
  });

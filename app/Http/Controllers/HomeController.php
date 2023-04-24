@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Validator;
+use App\Rules\Uppercase;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public $data = [];
     public function index() {
         $this->data['title'] = 'Dao tao lap trinh vien';
         $this->data['message'] = 'Dang Ky Tai Khoan Thanh Cong';
+        // $users = DB::select('select * from users WHERE email =:email',[
+        //     'email' => 'vananh@gmail.com'
+        // ]);
+        // dd($users);
         return view('clients.home', $this->data);
     }
 
