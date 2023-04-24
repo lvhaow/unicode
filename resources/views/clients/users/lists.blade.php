@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <h1>{{$title}}</h1>
-    <a href="#" class="btn btn-primary">Them nguoi dung</a>
+    <a href="{{route('users.add')}}" class="btn btn-primary">Them nguoi dung</a>
     <hr/>
     <table class="table table-bordered">
         <thead>

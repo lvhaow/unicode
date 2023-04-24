@@ -26,6 +26,22 @@ class UsersController extends Controller
     }
 
     public function postAdd(Request $request) {
-        return 'ok';
+        $request->validate([
+            'fullname' => 'required|min:5',
+            'email' => 'required|email|unique:users'
+        ],[
+            'fullname.required' => 'Ho va ten bat buoc phai nhap',
+            'fullname.min' => 'Ho va te phai tu :min ky tu tro len',
+            'email.required' => 'Email bat buoc phai nhap',
+            'email.email' => 'Email khong dung dinh dang',
+            'email.unique' => 'Email da ton tai trong he thong'
+        ]);
+        $dataInsert = [
+            $request->fullname,
+            $request->email,
+            date('y-m-d H:i:s')
+        ];
+        $this->users->addUser($dataInsert);
+        return redirect()->route('users.index')->with('msg', 'Them Nguoi Dung Thanh Cong');
     }
 }
